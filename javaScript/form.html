@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .input-error {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <div class="error" id="nameError">Please enter your name</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <div class="error" id="emailError">Please enter a valid email</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <div class="error" id="passwordError">Please enter a password (min 6 characters)</div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword">
+                <div class="error" id="confirmPasswordError">Passwords do not match</div>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('signupForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const errorElements = document.querySelectorAll('.error');
+
+        function showError(element, message) {
+            element.textContent = message;
+            element.previousElementSibling.classList.add('input-error');
+            element.style.display = 'block';
+        }
+
+        function clearErrors() {
+            errorElements.forEach(error => {
+                error.textContent = '';
+                error.previousElementSibling.classList.remove('input-error');
+                error.style.display = 'none';
+            });
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearErrors();
+
+            let isValid = true;
+
+            // Name validation
+            if (nameInput.value.trim() === '') {
+                showError(document.getElementById('nameError'), 'Please enter your name');
+                isValid = false;
+            }
+
+            // Email validation
+            if (emailInput.value.trim() === '') {
+                showError(document.getElementById('emailError'), 'Please enter your email');
+                isValid = false;
+            } else if (!validateEmail(emailInput.value.trim())) {
+                showError(document.getElementById('emailError'), 'Please enter a valid email');
+                isValid = false;
+            }
+
+            // Password validation
+            if (passwordInput.value === '') {
+                showError(document.getElementById('passwordError'), 'Please enter a password');
+                isValid = false;
+            } else if (passwordInput.value.length < 6) {
+                showError(document.getElementById('passwordError'), 'Password must be at least 6 characters');
+                isValid = false;
+            }
+
+            // Confirm Password validation
+            if (confirmPasswordInput.value === '') {
+                showError(document.getElementById('confirmPasswordError'), 'Please confirm your password');
+                isValid = false;
+            } else if (passwordInput.value !== confirmPasswordInput.value) {
+                showError(document.getElementById('confirmPasswordError'), 'Passwords do not match');
+                isValid = false;
+            }
+
+            if (isValid) {
+                const userData = {
+                    name: nameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    password: passwordInput.value
+                };
+
+                alert(`Form submitted successfully!\n\nName: ${userData.name}\nEmail: ${userData.email}\nPassword: ${userData.password}`);
+                
+                form.reset();
+            }
+        });
+
+        // Real-time password match checking
+        confirmPasswordInput.addEventListener('input', function() {
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                showError(document.getElementById('confirmPasswordError'), 'Passwords do not match');
+            } else {
+                document.getElementById('confirmPasswordError').style.display = 'none';
+                confirmPasswordInput.classList.remove('input-error');
+            }
+        });
+    </script>
+</body>
+</html>
