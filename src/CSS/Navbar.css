@@ -1,0 +1,44 @@
+/* Custom CSS */
+.bg-darkblue {
+    background-color: #003366 !important; /* Dark Blue background */
+  }
+  
+  .navbar-brand {
+    font-family: 'Poppins', sans-serif; /* Font choice for the brand */
+    font-size: 1.75rem;
+    font-weight: 600;
+  }
+  
+  .nav-link {
+    font-family: 'Poppins', sans-serif; /* Font choice for navbar links */
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff !important;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #ffcc00 !important; /* Highlight color on hover */
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #ffffff !important; /* White icon for the hamburger menu */
+  }
+  
+  .logo-text {
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  
+  @media (max-width: 991px) {
+    .navbar-nav {
+      text-align: center;
+    }
+  }
+  
+  /* Button Styles */
+  .navbar-toggler {
+    border-color: #ffffff;
+  }
+  
