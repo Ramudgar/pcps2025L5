@@ -37,6 +37,11 @@ const NavbarComponent = () => {
                 Recipes
               </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/counter"> {/* Use Link instead of anchor tag */}
+                Counter App
+              </Link>
+            </li>
           </ul>
           <ul className="navbar-nav ms-auto d-flex">
             <li className="nav-item">
