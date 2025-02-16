@@ -1,13 +1,14 @@
 import React from "react";
 import '../CSS/Navbar.css';
+import { Link } from "react-router-dom";
 
 const NavbarComponent = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-darkblue">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/"> {/* Use a instead of anchor tag */}
+        <Link className="navbar-brand" to="/"> {/* Use a instead of anchor tag */}
           <span className="logo-text">RecipeNext</span>
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,36 +23,41 @@ const NavbarComponent = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-a active" href="/"> {/* Use a instead of anchor tag */}
+              <Link className="nav-a active" to="/"> {/* Use a instead of anchor tag */}
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-a" href="/chefs"> {/* Use a instead of anchor tag */}
+              <Link className="nav-a" to="/chefs"> {/* Use a instead of anchor tag */}
                 Chefs
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-a" href="/recipes"> {/* Use a instead of anchor tag */}
+              <Link className="nav-a" to="/recipes"> {/* Use a instead of anchor tag */}
                 Recipes
-              </a>
+              </Link>
             </li>
           </ul>
           <ul className="navbar-nav ms-auto d-flex">
             <li className="nav-item">
-              <a className="nav-a" href="/signup"> {/* Use a instead of anchor tag */}
+              <Link className="nav-a" to="/signup"> {/* Use a instead of anchor tag */}
                 Signup
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-a" href="/login"> {/* Use a instead of anchor tag */}
+              <Link className="nav-a" to="/login"> {/* Use a instead of anchor tag */}
                 Login
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-a" href="/counter"> {/* Use a instead of anchor tag */}
+              <Link className="nav-a" to="/counter"> {/* Use a instead of anchor tag */}
                 Counter
-              </a>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-a" to="/compb"> {/* Use a instead of anchor tag */}
+                Comp-B
+              </Link>
             </li>
           </ul>
         </div>
