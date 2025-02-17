@@ -33,13 +33,18 @@ const NavbarComponent = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/recipes"> {/* Use Link instead of anchor tag */}
+              <Link className="nav-link" to="/recipe"> {/* Use Link instead of anchor tag */}
                 Recipes
               </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/counter"> {/* Use Link instead of anchor tag */}
                 Counter App
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/compb"> {/* Use Link instead of anchor tag */}
+                Comp B
               </Link>
             </li>
           </ul>
