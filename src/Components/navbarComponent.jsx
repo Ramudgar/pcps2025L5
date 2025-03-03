@@ -38,6 +38,11 @@ const NavbarComponent = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link className="nav-link" to="/weather"> {/* Use Link instead of anchor tag */}
+                Get weather data
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/counter"> {/* Use Link instead of anchor tag */}
                 Counter App
               </Link>

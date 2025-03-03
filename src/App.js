@@ -5,6 +5,7 @@ import CounterComponent from "./Components/CounterComponent";
 import RecipeComponent from "./Components/RecipeComponent";
 import BComponent from "./Components/BComponent";
 import ChefsComponent from "./Components/ChefsComponent";
+import Weather from "./Components/Weather";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/counter" element={<CounterComponent />} />
           <Route path='/recipe' element={<RecipeComponent />} />
           <Route path="/compb" element={<BComponent />} />
+          <Route path="/weather" element={<Weather />} />
           <Route path="/chefs" element={<ChefsComponent />} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
         </Routes>
