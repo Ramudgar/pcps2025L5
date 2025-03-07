@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 const Weather = () => {
@@ -6,33 +6,20 @@ const Weather = () => {
   const [weather, setWeather] = useState(null);
   const API_KEY = "9cc6c4755d4547f8ad445520250303"; // Replace with your API Key
 
-    const fetchWeather = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}
+  const fetchWeather = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}
   `
-        );
-        console.log(response.data);
-        setWeather(response.data);
-      } catch (error) {
-        console.error("Error fetching weather data:", error);
-        setWeather(null);
-      }
-    };
-
-  // useEffect(() => {
-  //   fetchWeather= async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`
-  //     );
-  //     console.log(response);
-  //     setWeather(response.data);
-  //   } catch (error) {
-  //     console.error("Error fetching weather data:", error);
-  //     setWeather(null);
-  //   }
-  // }}, [city]);
+      );
+      console.log(response.data);
+      // console.log(response.data);
+      setWeather(response.data);
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+      setWeather(null);
+    }
+  };
 
   return (
     <div className="p-4 text-center">
