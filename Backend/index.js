@@ -38,6 +38,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const db = require("./Config/db");
 const userRoutes = require("./Route/userRoutes");
+const authRoute = require("./Route/authRoute");
 dotenv.config();
 
 const app = express();
@@ -46,7 +47,9 @@ const app = express();
 app.use(express.json());
 
 // Routes
-app.use("/api/v1/",userRoutes);
+app.use("/api/v1/user",userRoutes);
+app.use("/api/v1/auth", authRoute);
+
 
 const PORT = process.env.PORT || 3000;
 
