@@ -4,7 +4,7 @@ const UserAuth = {
   register: async (username, useremail, userpassword) => {
     try {
       const sql =
-        "INSERT INTO userauth(username,useremail,userpassword) VALUES(?,?,?)";
+        "INSERT INTO userauth(username,email,password) VALUES(?,?,?)";
       const [result] = await db.query(sql, [username, useremail, userpassword]);
       return result.insertId;
     } catch (error) {
@@ -14,7 +14,7 @@ const UserAuth = {
 
   findByEmail: async (useremail) => {
     try {
-      const sql = "SELECT * FROM userauth WHERE useremail = ?";
+      const sql = "SELECT * FROM userauth WHERE email = ?";
       const [rows] = await db.query(sql, [useremail]);
       return rows[0]; // Return single user object
     } catch (error) {
