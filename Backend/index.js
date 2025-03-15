@@ -33,12 +33,12 @@
 //   console.log(`server is running on a port ${port}`);
 // });
 
-
 const express = require("express");
 const dotenv = require("dotenv");
-const db = require("./Config/db");
-const userRoutes = require("./Route/userRoutes");
-const authRoute = require("./Route/authRoute");
+// const db = require("./Config/db");
+const sequelize = require("./config/db");
+const userRoutes = require("./routes/userRoutes");
+const authRoute = require("./routes/authRoute");
 dotenv.config();
 
 const app = express();
@@ -46,15 +46,25 @@ const app = express();
 // Middleware
 app.use(express.json());
 
+app.use("/uploads/profiles", express.static("uploads/profiles")); // Serve profile pictures
+
 // Routes
-app.use("/api/v1/user",userRoutes);
+app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/auth", authRoute);
-
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
-
+app.use("/api/v1/profile", require("./routes/profileRoute"));
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+// Sync Database & Start Server
+const PORT = process.env.PORT || 5000;
+sequelize
+  .sync({
+    //  alter: true   //used when we want to update the table schema without losing the data in the table
+    force: false, // used when we when the table is not created and we want to create it but it won't update the table schema if we change the fields in the table
+    // force: true, // makes the table to be created and if the table is already created it will drop the table and create a new one
+  }) // Ensures tables exist
+  .then(() => {
+    console.log("✅ Database Synced with MySQL");
+    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+  })
+  .catch((err) => console.error("❌ Database Sync Error:", err));
