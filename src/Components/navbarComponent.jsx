@@ -52,6 +52,12 @@ const NavbarComponent = () => {
                 Comp B
               </Link>
             </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/getprofiles"> {/* Use Link instead of anchor tag */}
+                Goto profile
+              </Link>
+            </li>
           </ul>
           <ul className="navbar-nav ms-auto d-flex">
             <li className="nav-item">

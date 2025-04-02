@@ -6,6 +6,7 @@ import RecipeComponent from "./Components/RecipeComponent";
 import BComponent from "./Components/BComponent";
 import ChefsComponent from "./Components/ChefsComponent";
 import Weather from "./Components/Weather";
+import GetProfile from "./Components/getProfile";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/weather" element={<Weather />} />
           <Route path="/chefs" element={<ChefsComponent />} />
           <Route path="*" element={<h1>404 Not Found</h1>} />
+          <Route path="/getprofiles" element={<GetProfile/>} />
         </Routes>
       </Router>
     </>
