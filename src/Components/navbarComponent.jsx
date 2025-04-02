@@ -33,10 +33,38 @@ const NavbarComponent = () => {
               </Link>
             </li>
             <li className="nav-item">
+<<<<<<< HEAD
               <Link className="nav-link" to="/recipes"> {/* Use Link instead of anchor tag */}
                 Recipes
               </Link>
             </li>
+=======
+              <Link className="nav-link" to="/recipe"> {/* Use Link instead of anchor tag */}
+                Recipes
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/weather"> {/* Use Link instead of anchor tag */}
+                Get weather data
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/counter"> {/* Use Link instead of anchor tag */}
+                Counter App
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/compb"> {/* Use Link instead of anchor tag */}
+                Comp B
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/getprofiles"> {/* Use Link instead of anchor tag */}
+                Goto profile
+              </Link>
+            </li>
+>>>>>>> secb
           </ul>
           <ul className="navbar-nav ms-auto d-flex">
             <li className="nav-item">
